@@ -25,16 +25,12 @@ import requests
 PAGERDUTY_JIRA_INTEGRATION_BASE = "https://api.pagerduty.com/integration-jira-cloud"
 
 def main():
-    if len(sys.argv) < 2:
-        print("Error: Please provide the Jira Account Mapping ID as an argument.")
-        print("Example: python dump_existing_rules.py PJV19ZB")
-        sys.exit(1)
+    # ── PASTE YOUR PRODUCTION VALUES HERE ──
+    mapping_id = "YOUR_ACCOUNT_MAPPING_ID"   # e.g., "PJV19ZB"
+    api_key = "YOUR_PAGERDUTY_TOKEN"         # e.g., "u+xxxxx..."
 
-    mapping_id = sys.argv[1]
-    api_key = os.environ.get("PAGERDUTY_TOKEN")
-
-    if not api_key:
-        print("Error: PAGERDUTY_TOKEN environment variable is not set.")
+    if mapping_id == "YOUR_ACCOUNT_MAPPING_ID" or api_key == "YOUR_PAGERDUTY_TOKEN":
+        print("Error: Please paste your mapping_id and api_key into the script first!")
         sys.exit(1)
 
     print(f"Fetching rules for mapping ID: {mapping_id}...")
