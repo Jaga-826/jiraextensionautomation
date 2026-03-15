@@ -15,6 +15,7 @@ permissions:
 
 env:
   PAGERDUTY_TOKEN: '${{ secrets.PAGERDUTY_TOKEN }}'
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 jobs:
   create-extensions:
