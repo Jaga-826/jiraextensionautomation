@@ -1,0 +1,11 @@
+# Add an extension manually here to test the GitHub actions locally or remotely!
+
+extensions:
+  # ── Example Test Entry ──────────────────────────────────────────────────
+  # 1. Run `terraform apply` to create the test service
+  # 2. Get the output `test_service_id` (e.g., "PABCD12")
+  # 3. Add it below and push to your git repository!
+
+    - service_id: "P8QYQA1"
+      impacted_service_id: "11454"
+      requesters_division_id: "10257"

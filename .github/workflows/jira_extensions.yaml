@@ -1,0 +1,43 @@
+---
+name: 'Jira Extension Automation'
+
+# Triggers when jira_extensions.yaml is changed on push to main
+'on':
+  push:
+    branches: ['main']
+    paths: ['jira_extensions.yaml']
+
+  # Allow manual trigger
+  workflow_dispatch: {}
+
+permissions:
+  contents: 'read'
+
+env:
+  PAGERDUTY_TOKEN: '${{ secrets.PAGERDUTY_TOKEN }}'
+
+jobs:
+  create-extensions:
+    name: 'Create Jira Extensions'
+    runs-on: 'ubuntu-latest'
+    defaults:
+      run:
+        shell: 'bash'
+
+    steps:
+      - name: 'Checkout code'
+        uses: 'actions/checkout@v4'
+
+      - name: 'Set up Python'
+        uses: 'actions/setup-python@v5'
+        with:
+          python-version: '3.12'
+
+      - name: 'Install dependencies'
+        run: 'pip install requests pyyaml'
+
+      - name: 'Create Jira Extensions'
+        run: 'python scripts/create_jira_extensions.py'
+
+    timeout-minutes: 5
+...
